@@ -4,6 +4,7 @@ namespace Company.Data.Entities;
 public class Department : IEntity
 {
     public int Id { get; set; }
+    [MaxLength(50), Re]
     public string Name { get; set; }
     public int CompanyId { get; set; }
 
