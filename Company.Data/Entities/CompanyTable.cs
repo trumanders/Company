@@ -1,6 +1,6 @@
 ﻿namespace Company.Data.Entities;
 
-public class Company : IEntity
+public class CompanyTable : IEntity
 {
     public int Id { get; set; }
 

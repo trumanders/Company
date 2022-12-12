@@ -1,6 +1,6 @@
 ﻿namespace Company.Data.Entities;
 
-public class JobTitle
+public class JobTitle : IEntity
 {
     public int Id { get; set; }
     [Required]
