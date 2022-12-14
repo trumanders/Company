@@ -1,12 +1,4 @@
-﻿using Company.Data.Entities;
-using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using System.Runtime.Intrinsics.X86;
-using System;
-using System.Security.Cryptography.X509Certificates;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
-
-namespace Company.Data.Contexts;
+﻿namespace Company.Data.Contexts;
 
 
 /// <summary>

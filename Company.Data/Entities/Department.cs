@@ -1,5 +1,4 @@
-﻿
-namespace Company.Data.Entities;
+﻿namespace Company.Data.Entities;
 
 public class Department : IEntity
 {
