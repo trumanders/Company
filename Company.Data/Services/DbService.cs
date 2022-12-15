@@ -1,5 +1,8 @@
 ﻿using AutoMapper;
 using Company.Data.Contexts;
+using System.Linq.Expressions;
+
+
 namespace Company.Data.Services;
 
 /// <summary>
@@ -23,6 +26,7 @@ public class DbService : IDbService
         _mapper = mapper;
     }
 
+
     // GetAsync
     public async Task<List<TDto>> GetAsync<TEntity, TDto>()
         where TEntity : class, IEntity
@@ -33,5 +37,25 @@ public class DbService : IDbService
 
         // Return a List of IMapper with DTOs
         return _mapper.Map<List<TDto>>(entities);
+    }
+
+
+    /* SINGLE ASYNC (get one record of a table) */
+
+    // Method to get one record of a table (calls the method to get one entity)
+    public async Task<TDto> SingleAsync<TEntity, TDto>(Expression<Func<TEntity, bool>> expression)
+       where TEntity : class, IEntity
+       where TDto : class
+    {        
+        var entity = await SingleAsync<TEntity>(expression);
+        return _mapper.Map<TDto>(entity);
+    }
+
+    // Private method that returns an entity
+    // Check wheter a matching record was found or not: Expression<Func<TEntity, bool>>
+    private async Task<IEntity?> SingleAsync<TEntity>(Expression<Func<TEntity, bool>> expression)
+        where TEntity : class, IEntity
+    {
+        return await _db.Set<TEntity>().SingleOrDefaultAsync(expression);
     }
 }
